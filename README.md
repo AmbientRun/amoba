@@ -1,6 +1,12 @@
-## AMOBA
+## AMOBA (POC)
 
 AMOBA is a moddable MOBA game written with the Ambient engine.
+
+
+https://github.com/AmbientRun/amoba/assets/35621141/632d4172-cc3e-4be9-90ac-3ca0575e80f8
+
+
+
 
 ## Usage
 
