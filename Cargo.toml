@@ -1,0 +1,47 @@
+[package]
+name = "amoba"
+
+edition = "2021"
+publish = false
+version = "0.0.1"
+
+[dependencies]
+ambient_api = { git = "https://github.com/AmbientRun/Ambient.git", rev = "c2ed491315c21f2f0f6adee8520cc0a81c69eb07" }
+
+[[bin]]
+name = "server_scene"
+path = "src/scene/server.rs"
+required-features = ["server"]
+
+[[bin]]
+name = "client_scene"
+path = "src/scene/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "client_ui"
+path = "src/ui/client.rs"
+required-features = ["client"]
+
+[[bin]]
+name = "server_ui"
+path = "src/ui/server.rs"
+required-features = ["server"]
+
+
+[[bin]]
+name = "server_player"
+path = "src/player/server.rs"
+required-features = ["server"]
+
+[[bin]]
+name = "client_map"
+path = "src/map/client.rs"
+required-features = ["client"]
+
+# src/_client and src/_server will not be used, just a ref to old implementation
+# zombie and player health are not implemented yet
+
+[features]
+client = ["ambient_api/client"]
+server = ["ambient_api/server"]

@@ -1,0 +1,11 @@
+[components]
+
+health = { type = "I32", name = "health", description = "health 0-100, avoid U8 as it may minus", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+base_side = { type = "U8", name = "base_side", description = "which side this base belongs to, 0=>Mars, 1=>Jupyter", attributes = [
+    "Debuggable",
+    "Networked",
+] }

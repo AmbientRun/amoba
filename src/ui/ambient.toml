@@ -1,0 +1,12 @@
+[messages.choose_role.fields]
+player_id = { type = "EntityId" }
+role = { type = "U32" }
+
+[messages.mouse_left_click.fields]
+ray_origin = { type = "Vec3" }
+ray_dir = { type = "Vec3" }
+player_id = { type = "EntityId" }
+
+[messages.cam_move.fields]
+direction = { type = "Vec2" }
+player_id = { type = "EntityId" }

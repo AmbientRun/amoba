@@ -1,0 +1,6 @@
+[[pipelines]]
+type = "Models"
+
+[[pipelines]]
+type = "Audio"
+convert = true

@@ -1,0 +1,33 @@
+[components]
+
+player_direction = { type = "F32", name = "player_direction", description = "used for camera angle", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+role = { type = "U32", name = "Team and hero", description = "0=>MarsHeroA, 1=>JupiterHeroA, 2=>MarsHeroB, ...", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+target_pos = { type = "Vec2", name = "target_pos", description = "target_pos", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+cam = { type = "EntityId", name = "cam", description = "cam", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+anim_model = { type = "EntityId", name = "anim_model", description = "anim_model", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+hero_model = { type = "EntityId", name = "is_hero", description = "is_hero", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+anim_state = { type = { type = "Vec", element_type = "F32" } }

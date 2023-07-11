@@ -1,0 +1,30 @@
+[ember]
+id = "amoba"
+name = "amoba"
+version = "0.0.1"
+
+includes = [
+    "src/scene/ambient.toml",
+    "src/ui/ambient.toml",
+    "src/player/ambient.toml",
+]
+
+[messages.player_walk.fields]
+emitter = { type = "EntityId" }
+listener = { type = "EntityId" }
+player_id = { type = "EntityId" }
+
+[messages.player_attack.fields]
+emitter = { type = "EntityId" }
+listener = { type = "EntityId" }
+player_id = { type = "EntityId" }
+
+[messages.coin_sound.fields]
+emitter = { type = "EntityId" }
+listener = { type = "EntityId" }
+player_id = { type = "EntityId" }
+
+[messages.blow_sound.fields]
+emitter = { type = "EntityId" }
+# listener = { type = "EntityId" }
+# player_id = { type = "EntityId" }
