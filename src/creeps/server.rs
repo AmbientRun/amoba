@@ -16,12 +16,12 @@ const INIT_POS: f32 = std::f32::consts::FRAC_PI_2;
 
 #[main]
 pub fn main() {
-    create_ranged_creep(Vec2{x:2., y:2.});
+    create_ranged_creep(Vec3{x:2., y:2., z:-0.8});
 
 
 }
 
-fn create_ranged_creep(init_pos: Vec2) -> EntityId{
+fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     let ranged_idle = PlayClipFromUrlNode::new(
         asset::url("assets/model/Yeti.fbx/CharacterArmature/Idle.anim").unwrap(),
     );
@@ -43,8 +43,8 @@ fn create_ranged_creep(init_pos: Vec2) -> EntityId{
 
     let model = Entity::new()
         .with_merge(make_transformable())
-        .with(translation(), vec3(init_pos.x, init_pos.y, 3.0))
-        .with(character_controller_height(), 1.0)
+        .with(translation(), vec3(init_pos.x, init_pos.y, init_pos.z))
+        .with(character_controller_height(), 0.5)
         .with(character_controller_radius(), 0.5)
         .with_default(physics_controlled())
         .with_default(local_to_world())
@@ -70,9 +70,7 @@ fn create_ranged_creep(init_pos: Vec2) -> EntityId{
 
     entity::add_component(model, children(), vec![anim_model]);
     entity::add_component(model, components::anim_model(), anim_model);
-    entity::add_component(model, components::target_pos(), init_pos);
+    entity::add_component(model, components::target_pos(), Vec2{x:init_pos.x, y:init_pos.y});
 
     model
-
-
 }
