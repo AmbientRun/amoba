@@ -4,11 +4,15 @@ use ambient_api::{
     concepts::make_transformable,
     entity::{add_component, self}, 
     components::core::{
-        transform::{translation, local_to_world, rotation, local_to_parent}, physics::{character_controller_height, character_controller_radius, physics_controlled, dynamic}, app::name, ecs::{parent, children}, prefab::prefab_from_url, animation::apply_animation_player
+        transform::{translation, local_to_world, rotation, local_to_parent},
+        physics::{character_controller_height, character_controller_radius, physics_controlled, dynamic},
+        app::name,
+        ecs::{parent, children},
+        prefab::prefab_from_url,
+        animation::apply_animation_player
     },
     prelude::{
-        Vec2,
-        vec3, Quat, Entity, EntityId
+        vec3, Quat, Entity, EntityId, Vec3, Vec2
     }, main, 
 };
 
