@@ -1,0 +1,11 @@
+[components]
+
+anim_model = { type = "EntityId", name = "anim_model", description = "anim_model", attributes = [
+    "Debuggable",
+    "Networked",
+] }
+
+target_pos = { type = "Vec2", name = "target_pos", description = "target_pos", attributes = [
+    "Debuggable",
+    "Networked",
+] }
