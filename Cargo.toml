@@ -35,6 +35,11 @@ path = "src/player/server.rs"
 required-features = ["server"]
 
 [[bin]]
+name = "server_creeps"
+path = "src/creeps/server.rs"
+required-features = ["server"]
+
+[[bin]]
 name = "client_map"
 path = "src/map/client.rs"
 required-features = ["client"]
