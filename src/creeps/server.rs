@@ -27,16 +27,16 @@ pub fn main() {
 
 fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     let ranged_idle = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Idle.fbx/animations/mixamo.com.anim").unwrap(),
+        asset::url("assets/model/Yeti.fbx/Idle.anim").unwrap(),
     );
     let ranged_walk = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/CharacterArmature/Run.anim").unwrap(),
+        asset::url("assets/anim/Yeti.fbx/Run.anim").unwrap(),
     );
     let ranged_attack = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/CharacterArmature/Punch.anim").unwrap(),
+        asset::url("assets/anim/Yeti.fbx/Punch.anim").unwrap(),
     );
     let ranged_death: PlayClipFromUrlNode = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/CharacterArmature/Death.anim").unwrap(),
+        asset::url("assets/model/Yeti.fbx/Death.anim").unwrap(),
     );
 
     let idle_player = AnimationPlayer::new(&ranged_idle);
