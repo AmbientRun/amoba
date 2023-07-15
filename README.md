@@ -28,7 +28,3 @@ For example, if you comment out the `map` mod:
 ```
 
 Then run with `ambient run --clean-build`. You will see the game map is gone.
-
-## Licenses
-
-Yeti model is from Ultimate Platformer Pack by @Quaternius, using the [CC0 1.0 Universal (CC0 1.0) Licence](https://creativecommons.org/publicdomain/zero/1.0/).
