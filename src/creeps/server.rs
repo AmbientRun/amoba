@@ -28,7 +28,7 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     //For an unknown reason - maybe the url is wrong, but at least the name of the animations is correct,
     //  the idle animation does not play
     let ranged_idle = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/CharacterArmature|Idle").unwrap(),
+        asset::url("assets/anim/Zombie Idle.fbx/animations/mixamo.com.anim").unwrap(),
     );
 
     let idle_player = AnimationPlayer::new(&ranged_idle);
@@ -51,7 +51,7 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
         .with(parent(), model)
         .with(
             prefab_from_url(),
-            asset::url("assets/model/Yeti.fbx").unwrap(),
+            asset::url("assets/model/copzombie_l_actisdato.fbx").unwrap(),
         )
         .with_default(local_to_parent())
         .with_default(local_to_world())
