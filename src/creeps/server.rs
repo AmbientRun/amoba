@@ -1,8 +1,6 @@
 use ambient_api::{
     animation::{PlayClipFromUrlNode, AnimationPlayer},
     asset, 
-    concepts::make_transformable,
-    entity::{add_component, self}, 
     components::core::{
         transform::{translation, local_to_world, rotation, local_to_parent},
         physics::{character_controller_height, character_controller_radius, physics_controlled, dynamic},
@@ -11,8 +9,11 @@ use ambient_api::{
         prefab::prefab_from_url,
         animation::apply_animation_player
     },
+    concepts::make_transformable,
+    entity::{add_component, self}, 
     prelude::{
-        vec3, Quat, Entity, EntityId, Vec3, Vec2
+        Quat, Entity, EntityId, Vec3, Vec2,
+        vec3, 
     }, main, 
 };
 
@@ -21,28 +22,16 @@ const INIT_POS: f32 = std::f32::consts::FRAC_PI_2;
 #[main]
 pub fn main() {
     create_ranged_creep(Vec3{x:2., y:2., z:-0.8});
-
-
 }
 
 fn create_ranged_creep(init_pos: Vec3) -> EntityId{
+    //For an unknown reason - maybe the url is wrong, but at least the name of the animations is correct,
+    //  the idle animation does not play
     let ranged_idle = PlayClipFromUrlNode::new(
         asset::url("assets/model/Yeti.fbx/CharacterArmature|Idle").unwrap(),
     );
-    let ranged_walk = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/CharacterArmature|Run").unwrap(),
-    );
-    let ranged_attack = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/CharacterArmature|Punch").unwrap(),
-    );
-    let ranged_death: PlayClipFromUrlNode = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/CharacterArmature|Death").unwrap(),
-    );
 
     let idle_player = AnimationPlayer::new(&ranged_idle);
-    let walk_player = AnimationPlayer::new(&ranged_walk);
-    let attack_player = AnimationPlayer::new(&ranged_attack);
-    let death_player = AnimationPlayer::new(&ranged_death);
 
 
     let model = Entity::new()
