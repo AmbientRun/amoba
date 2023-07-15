@@ -27,7 +27,7 @@ pub fn main() {
 
 fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     let ranged_idle = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/CharacterArmature/Idle.anim").unwrap(),
+        asset::url("assets/anim/Idle.fbx/animations/mixamo.com.anim").unwrap(),
     );
     let ranged_walk = PlayClipFromUrlNode::new(
         asset::url("assets/anim/Yeti.fbx/CharacterArmature/Run.anim").unwrap(),
