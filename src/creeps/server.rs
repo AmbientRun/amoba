@@ -27,16 +27,16 @@ pub fn main() {
 
 fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     let ranged_idle = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/Idle.anim").unwrap(),
+        asset::url("assets/model/Yeti.fbx/CharacterArmature|Idle").unwrap(),
     );
     let ranged_walk = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/Run.anim").unwrap(),
+        asset::url("assets/anim/Yeti.fbx/CharacterArmature|Run").unwrap(),
     );
     let ranged_attack = PlayClipFromUrlNode::new(
-        asset::url("assets/anim/Yeti.fbx/Punch.anim").unwrap(),
+        asset::url("assets/anim/Yeti.fbx/CharacterArmature|Punch").unwrap(),
     );
     let ranged_death: PlayClipFromUrlNode = PlayClipFromUrlNode::new(
-        asset::url("assets/model/Yeti.fbx/Death.anim").unwrap(),
+        asset::url("assets/model/Yeti.fbx/CharacterArmature|Death").unwrap(),
     );
 
     let idle_player = AnimationPlayer::new(&ranged_idle);
@@ -69,7 +69,7 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
         .with(translation(), vec3(0.0, 0.0, 0.8))
         .spawn();
 
-    add_component(anim_model, apply_animation_player(), idle_player.0);
+    entity::add_component(anim_model, apply_animation_player(), idle_player.0);
     entity::add_component(anim_model, components::anim_state(), vec![1.0, 0.0]);
 
     entity::add_component(model, children(), vec![anim_model]);
