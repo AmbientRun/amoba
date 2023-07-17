@@ -55,7 +55,7 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
         )
         .with_default(local_to_parent())
         .with_default(local_to_world())
-        .with(translation(), vec3(0.0, 0.0, 0.8))
+        .with(translation(), vec3(0.0, 0.0, -0.5))
         .spawn();
 
     entity::add_component(anim_model, apply_animation_player(), idle_player.0);
