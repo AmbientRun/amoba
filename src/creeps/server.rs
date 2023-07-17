@@ -3,7 +3,7 @@ use ambient_api::{
     asset, 
     components::core::{
         transform::{translation, local_to_world, rotation, local_to_parent},
-        physics::{character_controller_height, character_controller_radius, physics_controlled, dynamic},
+        physics::{character_controller_height, character_controller_radius, dynamic, physics_controlled, cube_collider},
         app::name,
         ecs::{parent, children},
         prefab::prefab_from_url,
@@ -37,6 +37,8 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
         .with(translation(), vec3(init_pos.x, init_pos.y, init_pos.z))
         .with(character_controller_height(), 0.5)
         .with(character_controller_radius(), 0.5)
+        .with(cube_collider(), Vec3::ONE)
+        .with(dynamic(), true)
         .with_default(physics_controlled())
         .with_default(local_to_world())
         .with(rotation(), Quat::from_rotation_z(-INIT_POS))
