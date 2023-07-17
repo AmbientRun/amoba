@@ -21,7 +21,7 @@ const INIT_POS: f32 = std::f32::consts::FRAC_PI_2;
 
 #[main]
 pub fn main() {
-    create_ranged_creep(Vec3{x:2., y:2., z:-0.8});
+    create_ranged_creep(Vec3{x:2., y:2., z:1.});
 }
 
 fn create_ranged_creep(init_pos: Vec3) -> EntityId{
@@ -35,9 +35,8 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
     let model = Entity::new()
         .with_merge(make_transformable())
         .with(translation(), vec3(init_pos.x, init_pos.y, init_pos.z))
-        .with(character_controller_height(), 0.5)
-        .with(character_controller_radius(), 0.5)
-        .with(cube_collider(), Vec3::ONE)
+        .with(character_controller_height(), 2.)
+        .with(character_controller_radius(), 0.3)
         .with(dynamic(), true)
         .with_default(physics_controlled())
         .with_default(local_to_world())
@@ -55,7 +54,7 @@ fn create_ranged_creep(init_pos: Vec3) -> EntityId{
         )
         .with_default(local_to_parent())
         .with_default(local_to_world())
-        .with(translation(), vec3(0.0, 0.0, -0.5))
+        .with(translation(), vec3(0.0, 0.0, 0.))
         .spawn();
 
     entity::add_component(anim_model, apply_animation_player(), idle_player.0);
