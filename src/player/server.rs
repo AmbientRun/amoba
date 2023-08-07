@@ -22,6 +22,12 @@ use ambient_api::{
 
 const INIT_POS: f32 = std::f32::consts::FRAC_PI_2;
 
+macro_rules! idle_animation_state {
+    () => {
+        vec![1.0, 0.0, 0.0]
+    };
+}
+
 #[main]
 pub fn main() {
     messages::ChooseRole::subscribe(|source, msg| {
@@ -39,7 +45,6 @@ pub fn main() {
         let walk_player = AnimationPlayer::new(&walk);
         let attack_player = AnimationPlayer::new(&attack);
 
-        let idle_animation_state: Vec<f32> = vec![1.0, 0.0, 0.0];
         let walk_animation_state: Vec<f32> = vec![0.0, 1.0, 0.0];
         let attack_animation_state: Vec<f32> = vec![0.0, 0.0, 1.0];
 
@@ -111,6 +116,7 @@ pub fn main() {
         entity::add_component(player_id, components::target_pos(), init_pos);
         query((player(), components::hero_model())).each_frame({
             move |list| {
+
                 for (player_id, (_, model)) in list {
                     let anim_model =
                         entity::get_component(player_id, components::anim_model()).unwrap();
@@ -140,7 +146,7 @@ pub fn main() {
                             entity::set_component(
                                 anim_model,
                                 components::anim_state(),
-                                vec![1.0, 0.0, 0.0],
+                                idle_animation_state!(),
                             );
                         };
                         continue;
