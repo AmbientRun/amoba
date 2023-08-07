@@ -100,7 +100,7 @@ pub fn main() {
             .with(translation(), vec3(0.0, 0.0, 0.8))
             .spawn();
         add_component(anim_model, apply_animation_player(), idle_player.0);
-        entity::add_component(anim_model, components::anim_state(), vec![1.0, 0.0]);
+        entity::add_component(anim_model, components::anim_state(), idle_animation_state!());
 
         entity::add_component(model, children(), vec![anim_model]);
         entity::add_component(player_id, components::role(), role);
