@@ -38,6 +38,11 @@ pub fn main() {
         let idle_player = AnimationPlayer::new(&idle);
         let walk_player = AnimationPlayer::new(&walk);
         let attack_player = AnimationPlayer::new(&attack);
+
+        let idle_animation_state: Vec<f32> = vec![1.0, 0.0, 0.0];
+        let walk_animation_state: Vec<f32> = vec![0.0, 1.0, 0.0];
+        let attack_animation_state: Vec<f32> = vec![0.0, 0.0, 1.0];
+
         // this is waiting for the ui server module to send a message
         println!("{:?} chose role {:?} in player module", source, msg.role);
 
