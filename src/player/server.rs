@@ -22,6 +22,10 @@ use ambient_api::{
 
 const INIT_POS: f32 = std::f32::consts::FRAC_PI_2;
 
+macro_rules! idle_animation_state { () => { vec![1.0, 0.0, 0.0] }; }
+macro_rules! walk_animation_state { () => { vec![0.0, 1.0, 0.0] }; }
+macro_rules! attack_animation_state { () => { vec![0.0, 0.0, 1.0] }; }
+
 #[main]
 pub fn main() {
     messages::ChooseRole::subscribe(|source, msg| {
@@ -38,6 +42,7 @@ pub fn main() {
         let idle_player = AnimationPlayer::new(&idle);
         let walk_player = AnimationPlayer::new(&walk);
         let attack_player = AnimationPlayer::new(&attack);
+
         // this is waiting for the ui server module to send a message
         println!("{:?} chose role {:?} in player module", source, msg.role);
 
@@ -95,7 +100,7 @@ pub fn main() {
             .with(translation(), vec3(0.0, 0.0, 0.8))
             .spawn();
         add_component(anim_model, apply_animation_player(), idle_player.0);
-        entity::add_component(anim_model, components::anim_state(), vec![1.0, 0.0]);
+        entity::add_component(anim_model, components::anim_state(), idle_animation_state!());
 
         entity::add_component(model, children(), vec![anim_model]);
         entity::add_component(player_id, components::role(), role);
@@ -106,13 +111,14 @@ pub fn main() {
         entity::add_component(player_id, components::target_pos(), init_pos);
         query((player(), components::hero_model())).each_frame({
             move |list| {
+
                 for (player_id, (_, model)) in list {
                     let anim_model =
                         entity::get_component(player_id, components::anim_model()).unwrap();
                     let anim_state =
                         entity::get_component(anim_model, components::anim_state()).unwrap();
 
-                    if anim_state == vec![0.0, 0.0, 1.0] {
+                    if anim_state == attack_animation_state!() {
                         continue;
                     }
                     let current_pos = entity::get_component(model, translation()).unwrap();
@@ -125,7 +131,7 @@ pub fn main() {
                         physics::move_character(model, vec3(0., 0., -0.1), 0.01, delta_time());
                         // }
                         if entity::get_component(anim_model, components::anim_state()).unwrap()
-                            != vec![0.0, 0.0, 1.0]
+                            != attack_animation_state!()
                         {
                             entity::set_component(
                                 anim_model,
@@ -135,7 +141,7 @@ pub fn main() {
                             entity::set_component(
                                 anim_model,
                                 components::anim_state(),
-                                vec![1.0, 0.0, 0.0],
+                                idle_animation_state!(),
                             );
                         };
                         continue;
@@ -153,12 +159,12 @@ pub fn main() {
                     let speed = 0.05;
                     let displace = diff.normalize_or_zero() * speed;
 
-                    if anim_state != vec![0.0, 1.0, 0.0] {
+                    if anim_state != walk_animation_state!() {
                         entity::set_component(anim_model, apply_animation_player(), walk_player.0);
                         entity::set_component(
                             anim_model,
                             components::anim_state(),
-                            vec![0.0, 1.0, 0.0],
+                            walk_animation_state!(),
                         );
                     }
                     let collision = physics::move_character(

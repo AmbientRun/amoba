@@ -30,4 +30,4 @@ hero_model = { type = "EntityId", name = "is_hero", description = "is_hero", att
     "Networked",
 ] }
 
-anim_state = { type = { type = "Vec", element_type = "F32" } }
+anim_state = { type = { type = "Vec", element_type = "F32", description = "allows for better transitioning between animations, through use of Animation Blend in the future. Currently it's a true/false vector for which animation is playing, but with 1.0 and 0.0 instead." } }
